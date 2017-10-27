@@ -1,0 +1,16 @@
+{% extends "page.html" %}
+{% block title %}Query{% endblock %}
+{% block page_content %}
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron media">
+      <div class="media-left">
+        <img alt="Wikidata logo" title="wikidata logo" src="{{ url_for('static', filename='img/logo.svg') }}" />
+      </div>
+      <div class="media-body">
+        <h1 class="media-heading">Query Wikidata</h1>
+        <p>
+          Import the file you would like to analyze (.csv or Excel only)
+        </p>
+      </div>
+    </div>
+{% endblock page_content %}

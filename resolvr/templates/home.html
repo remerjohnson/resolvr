@@ -1,0 +1,16 @@
+{% extends "page.html" %}
+{% block title %}Home{% endblock %}
+{% block page_content %}
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron media">
+      <div class="media-left">
+        <img alt="Portal logo." title="portal logo" src="{{ url_for('static', filename='img/icons8-broadcasting-filled.png') }}" />
+      </div>
+      <div class="media-body">
+        <h1 class="media-heading">Resolvr Home</h1>
+        <p>
+          To get started on resolving IDs to Wikidata, select above
+        </p>
+      </div>
+    </div>
+{% endblock page_content %}
