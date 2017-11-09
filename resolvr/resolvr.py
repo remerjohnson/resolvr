@@ -26,9 +26,11 @@ def home(name=None):
 def single_query(name=None):
     return render_template('single_query.html', name=name)
 
-@app.route('/lookup_view', methods=['POST'])
-def lookup_view():
-    return render_template('single_query.html', name=name)
+@app.route('/lookup_result', methods=['POST', 'GET'])
+def lookup_result():
+      if request.method == 'POST':
+          lookup_result = request.form
+          return render_template("single_query_result.html",lookup_result = lookup_result)
 
 @app.route('/batch_query')
 def batch_query(name=None):
