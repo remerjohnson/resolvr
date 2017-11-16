@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # coding=UTF-8
 #
-# Resolvr Wikidata Querying App
+# Resolvr: A Wikidata Querying App
 #
 
 import os
@@ -22,15 +22,25 @@ def allowed_file(filename):
 def home(name=None):
     return render_template('home.html', name=name)
 
-@app.route('/single_query')
-def single_query(name=None):
-    return render_template('single_query.html', name=name)
+@app.route('/single_query', methods=['POST', 'GET'])
+def single_query():
+    errors = []
+    if request.method == 'POST':
+        # get IDs that the user has input
+        try:
+            id_entry = request.form['id_entry']
+        except:
+            errors.append('Sorry. Unable to get ID')
+            return render_template("single_query.html", errors = errors)
+        if id_entry:
+            queryString = 'SELECT ?person ?personLabel WHERE { ?person wdt:P214 "' + id_entry + '" SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }}'
+            try:
+                
 
-@app.route('/lookup_result', methods=['POST', 'GET'])
-def lookup_result():
-      if request.method == 'POST':
-          lookup_result = request.form
-          return render_template("single_query_result.html",lookup_result = lookup_result)
+
+
+
+    return render_template("single_query.html", )
 
 @app.route('/batch_query')
 def batch_query(name=None):
