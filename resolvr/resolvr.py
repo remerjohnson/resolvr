@@ -7,6 +7,7 @@
 import os
 from flask import *
 import pandas as pd
+from SPARQLWrapper import SPARQLWrapper, JSON
 from werkzeug.utils import secure_filename
 
 # Declare and load the app
@@ -25,6 +26,9 @@ def home(name=None):
 @app.route('/single_query', methods=['POST', 'GET'])
 def single_query():
     errors = []
+    results = []
+    importantPeople = []
+    sparql = SPARQLWrapper("https://query.wikidata.org/sparql")
     if request.method == 'POST':
         # get IDs that the user has input
         try:
@@ -35,12 +39,18 @@ def single_query():
         if id_entry:
             queryString = 'SELECT ?person ?personLabel WHERE { ?person wdt:P214 "' + id_entry + '" SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }}'
             try:
-                
-
-
-
-
-    return render_template("single_query.html", )
+                sparql.setQuery(queryString)
+                sparql.setReturnFormat(JSON)
+                results = sparql.query().convert()
+                for result in results["results"]["bindings"]:
+                    importantPeople.append({
+                        'Wikidata_URI': result["person"]["value"],
+                        'name': result["personLabel"]["value"]
+                    })
+            except:
+                errors.append('Sorry, invalid ID')
+    df1 = pd.DataFrame(importantPeople)
+    return render_template("single_query.html", errors=errors, tables=[df1.to_html(classes='table table-striped')], title = 'Results for')
 
 @app.route('/batch_query')
 def batch_query(name=None):

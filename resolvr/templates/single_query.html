@@ -16,24 +16,17 @@
             <p>Enter ID: <input type="text" name="id_entry" /></p>
             <input type="submit" />
         </form>
-    </div>
-    <br>
-    <div class="container">
-      <h1>Your result</h1>
-        <table class ="table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Uhhh</th>
-            </tr>
-          </thead>
-          <tbody>
-             {% for key, value in lookup_result.items() %}
-             <tr>
-                <td>{{ key }}</td>
-                <td>{{ value }}</td>
-             </tr>
-             {% endfor %}
-          </tbody>
-        </table>
+      </div>
+      <br>
+          {% for error in errors %}
+            <h4>{{ error }}</h4>
+          {% endfor %}
+      <br>
+      <br>
+      <div class="container">
+          {% for table in tables if title%}
+            <h2>{{ title }}</h2>
+            {{ table|safe }}
+          {% endfor %}
+      </div>
 {% endblock page_content %}
