@@ -50,7 +50,7 @@ def single_query():
             except:
                 errors.append('Sorry, invalid ID')
     df1 = pd.DataFrame(importantPeople)
-    return render_template("single_query.html", errors=errors, tables=[df1.to_html(classes='table table-striped')], title = 'Results for')
+    return render_template("single_query.html", errors=errors, tables=[df1.to_html(classes='table table-striped')], title = 'Results:')
 
 @app.route('/batch_query')
 def batch_query(name=None):
