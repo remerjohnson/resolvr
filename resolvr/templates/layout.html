@@ -20,6 +20,33 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
 </head>
+<div class="navbar navbar-inverse navbar-fixed-left">
+  <a class="navbar-brand" href="/">Resolvr</a>
+  <ul class="nav navbar-nav">
+    <li><a href="/"><span> Home </span></a></li>
+    <li><a href="/batch_query"><span> Query Wikidata via file </a></span></li>
+  </ul>
+</div>
+
+<!-- Sidebar navigation -->
+<div id="slide-out" class="side-nav fixed">
+    <ul class="nav nav-pills nav-stacked">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="/single_query"><h2>Query Wikidata via single ID<span class="caret"></span></h2></a>
+        <ul class="dropdown-menu">
+          <li><a href="/single_query">VIAF ID</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="/batch_query"><h2>Query Wikidata via file<span class="caret"></span></h2></a>
+        <ul class="dropdown-menu">
+          <li><a href="/">Submenu 2-1</a></li>
+        </ul>
+      </li>
+    </ul>
+</div>
+
+
 <body>
   {% block page_header %}{% endblock %}
   {% block page_layout %}{% endblock %}
