@@ -6,11 +6,12 @@
         <img alt="Wikidata logo" title="wikidata logo" src="{{ url_for('static', filename='img/logo.svg') }}" />
       </div>
       <div class="media-body">
-        <h1 class="media-heading">Query Wikidata with IDs</h1>      
+        <h1 class="media-heading">Query Wikidata with IDs</h1>
       </div>
+      <br>
       <div class="form-body">
         <form role="form" action="{{ url_for('single_query') }}" method="post">
-            <p>Enter ID (e.g. "52010985"): <input type="text" name="id_entry" /></p>
+            <p>Enter VIAF ID (e.g. "52010985"): <input type="text" name="id_entry" /></p>
             <input type="submit" />
         </form>
       </div>
@@ -22,7 +23,7 @@
       <br>
       <div class="container">
           {% for table in tables if title%}
-            <h2>{{ title }}</h2>
+            <h3>{{ title }}</h3>
             {{ table|safe }}
           {% endfor %}
       </div>

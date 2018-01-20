@@ -44,11 +44,12 @@ def single_query():
                 results = sparql.query().convert()
                 for result in results["results"]["bindings"]:
                     importantPeople.append({
-                        'Wikidata_URI': result["person"]["value"],
-                        'name': result["personLabel"]["value"]
+                        'ID entered': id_entry,
+                        'Wikidata URI': result["person"]["value"],
+                        'Name': result["personLabel"]["value"]
                     })
             except:
-                errors.append('Sorry, invalid ID')
+                errors.append('Sorry, something went wrong')
     df1 = pd.DataFrame(importantPeople)
     return render_template("single_query.html", errors=errors, tables=[df1.to_html(classes='table table-striped')], title = 'Results:')
 
