@@ -23,8 +23,8 @@ def allowed_file(filename):
 def home(name=None):
     return render_template('home.html', name=name)
 
-@app.route('/single_query', methods=['POST', 'GET'])
-def single_query():
+@app.route('/single-query/viaf', methods=['POST', 'GET'])
+def single_query_viaf():
     errors = []
     results = []
     importantPeople = []
@@ -35,7 +35,7 @@ def single_query():
             id_entry = request.form['id_entry']
         except:
             errors.append('Sorry. Unable to get ID')
-            return render_template("single_query.html", errors = errors)
+            return render_template("/single-query/viaf.html", errors = errors)
         if id_entry:
             queryString = 'SELECT ?person ?personLabel WHERE { ?person wdt:P214 "' + id_entry + '" SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }}'
             try:
@@ -51,7 +51,7 @@ def single_query():
             except:
                 errors.append('Sorry, something went wrong')
     df1 = pd.DataFrame(importantPeople)
-    return render_template("single_query.html", errors=errors, tables=[df1.to_html(classes='table table-striped')], title = 'Results:')
+    return render_template("/single-query/viaf.html", errors=errors, tables=[df1.to_html(classes='table table-striped')], title = 'Results:')
 
 @app.route('/batch_query')
 def batch_query(name=None):
