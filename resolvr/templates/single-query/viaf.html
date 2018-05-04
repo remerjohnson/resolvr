@@ -7,14 +7,24 @@
       </div>
       <div class="media-body">
         <h1 class="media-heading">Query Wikidata with IDs</h1>
-        <p>
-          Select the type of ID you have
-        </p>
       </div>
+      <br>
       <div class="form-body">
-        <form action="{{ url_for('lookup_result') }}" method="post">
-            <p>Enter ID: <input type="text" name="id_entry" /></p>
+        <form role="form" action="{{ url_for('single_query_viaf') }}" method="post">
+            <p>Enter VIAF ID (e.g. "52010985"): <input type="text" name="id_entry" /></p>
             <input type="submit" />
         </form>
-    </div>
+      </div>
+      <br>
+          {% for error in errors %}
+            <h4>{{ error }}</h4>
+          {% endfor %}
+      <br>
+      <br>
+      <div class="container">
+          {% for table in tables if title%}
+            <h3>{{ title }}</h3>
+            {{ table|safe }}
+          {% endfor %}
+      </div>
 {% endblock page_content %}

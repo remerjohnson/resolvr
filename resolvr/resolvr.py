@@ -1,12 +1,13 @@
 #!/usr/bin/python
 # coding=UTF-8
 #
-# Resolvr Wikidata Querying App
+# Resolvr: A Wikidata Querying App
 #
 
 import os
 from flask import *
 import pandas as pd
+from SPARQLWrapper import SPARQLWrapper, JSON
 from werkzeug.utils import secure_filename
 
 # Declare and load the app
@@ -22,15 +23,35 @@ def allowed_file(filename):
 def home(name=None):
     return render_template('home.html', name=name)
 
-@app.route('/single_query')
-def single_query(name=None):
-    return render_template('single_query.html', name=name)
-
-@app.route('/lookup_result', methods=['POST', 'GET'])
-def lookup_result():
-      if request.method == 'POST':
-          lookup_result = request.form
-          return render_template("single_query_result.html",lookup_result = lookup_result)
+@app.route('/single-query/viaf', methods=['POST', 'GET'])
+def single_query_viaf():
+    errors = []
+    results = []
+    importantPeople = []
+    sparql = SPARQLWrapper("https://query.wikidata.org/sparql")
+    if request.method == 'POST':
+        # get IDs that the user has input
+        try:
+            id_entry = request.form['id_entry']
+        except:
+            errors.append('Sorry. Unable to get ID')
+            return render_template("/single-query/viaf.html", errors = errors)
+        if id_entry:
+            queryString = 'SELECT ?person ?personLabel WHERE { ?person wdt:P214 "' + id_entry + '" SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }}'
+            try:
+                sparql.setQuery(queryString)
+                sparql.setReturnFormat(JSON)
+                results = sparql.query().convert()
+                for result in results["results"]["bindings"]:
+                    importantPeople.append({
+                        'ID entered': id_entry,
+                        'Wikidata URI': result["person"]["value"],
+                        'Name': result["personLabel"]["value"]
+                    })
+            except:
+                errors.append('Sorry, something went wrong')
+    df1 = pd.DataFrame(importantPeople)
+    return render_template("/single-query/viaf.html", errors=errors, tables=[df1.to_html(classes='table table-striped')], title = 'Results:')
 
 @app.route('/batch_query')
 def batch_query(name=None):
