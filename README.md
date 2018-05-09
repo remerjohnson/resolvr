@@ -8,9 +8,16 @@ The use of this app comes in when you have semi-structured data already. You hav
 
 Resolution is typically done after you have reconciled entities, or you just happen to have them at hand from past cataloging/description. For instance, many cataloged books at some point have FAST IDs. Or maybe you have already reconciled a list of topics to FAST, and you want to query those FAST IDs against Wikidata.    
 
-## How to run
+## Setting Up Your Environment
 
-### Using `pip`
+### Using Anaconda (Preferred)
+
+Create the `conda` environment using the environment yml, `flaskdev.yml`: 
+```shell
+$ conda env create -f flaskdev.yml
+```
+
+### Alternative: using `pip`
 
 Create the `pip` environment using the `requirements.txt` file:
 
@@ -18,13 +25,7 @@ Create the `pip` environment using the `requirements.txt` file:
 $ pip install -r requirements.txt
 ```
 
-### Using Anaconda
-
-Create the `conda` environment using the environment yml, `flaskdev.yml`: 
-```shell
-$ conda env create -f flaskdev.yml
-```
-
+## How to run
 After setting up the environment, activate it, then `cd` into the `/resolvr/` directory. Export the Flask environment variable: 
 ```shell
 $ export FLASK_APP=resolvr.py
