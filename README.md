@@ -10,4 +10,19 @@ Resolution is typically done after you have reconciled entities, or you just hap
 
 ## How to run
 
-After installing the relevant libraries, `cd` into the `/resolvr/` directory and serve the app via `flask run`. It will run on localhost
+### Using `pip`
+
+Create the `pip` environment using the `requirements.txt` file:
+
+```shell
+$ pip install -r requirements.txt
+```
+
+### Using Anaconda
+
+Create the `conda` environment using the environment yml, `flaskdev.yml`: 
+```shell
+$ conda env create -f flaskdev.yml
+```
+
+After setting up the environment, activate it, then `cd` into the `/resolvr/` directory and serve the app via `flask run`. It will run on localhost
