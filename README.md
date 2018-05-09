@@ -25,4 +25,9 @@ Create the `conda` environment using the environment yml, `flaskdev.yml`:
 $ conda env create -f flaskdev.yml
 ```
 
-After setting up the environment, activate it, then `cd` into the `/resolvr/` directory and serve the app via `flask run`. It will run on localhost
+After setting up the environment, activate it, then `cd` into the `/resolvr/` directory. Export the Flask environment variable: 
+```shell
+$ export FLASK_APP=resolvr.py
+```
+
+Finally, serve the app by typing `flask run`. It will run on localhost
