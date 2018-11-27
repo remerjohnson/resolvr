@@ -1,0 +1,10 @@
+{% extends "page.html" %}
+{% block page_content %}
+
+<div class="container">
+    {% for table in tables if title%}
+      <h3>{{ title }}</h3>
+      {{ table|safe }}
+    {% endfor %}
+</div>
+{% endblock page_content %}

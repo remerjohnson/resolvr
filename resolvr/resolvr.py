@@ -64,8 +64,7 @@ def data_view():
         return "No file"
 
     df = pd.read_csv(file)
-
-    return df.to_html(classes='table table-striped')
+    return render_template("/file_analysis.html", tables=[df.to_html(classes='table table-striped')], title = 'Your data:')
 
 
 if __name__ == '__main__':
