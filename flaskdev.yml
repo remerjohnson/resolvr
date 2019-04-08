@@ -2,44 +2,46 @@ name: flaskdev
 channels:
   - defaults
 dependencies:
-  - ca-certificates=2018.03.07=0
-  - certifi=2018.4.16=py36_0
-  - click=6.7=py36h5253387_0
-  - flask=0.12.2=py36hb24657c_0
-  - intel-openmp=2018.0.0=8
-  - itsdangerous=0.24=py36h93cc618_1
-  - jinja2=2.10=py36ha16c418_0
-  - libedit=3.1=heed3624_0
+  - blas=1.0=mkl
+  - ca-certificates=2019.1.23=0
+  - certifi=2019.3.9=py37_0
+  - click=7.0=py37_0
+  - flask=1.0.2=py37_1
+  - intel-openmp=2019.3=199
+  - itsdangerous=1.1.0=py37_0
+  - jinja2=2.10=py37_0
+  - libedit=3.1.20181209=hc058e9b_0
   - libffi=3.2.1=hd88cf55_4
-  - libgcc-ng=7.2.0=hdf63c60_3
-  - libgfortran-ng=7.2.0=hdf63c60_3
-  - libstdcxx-ng=7.2.0=hdf63c60_3
-  - markupsafe=1.0=py36hd9260cd_1
-  - mkl=2018.0.2=1
-  - mkl_fft=1.0.1=py36h3010b51_0
-  - mkl_random=1.0.1=py36h629b387_0
-  - ncurses=6.0=h9df7e31_2
-  - numpy=1.14.2=py36hdbf6ddf_1
-  - openssl=1.0.2o=h20670df_0
-  - pandas=0.22.0=py36hf484d3e_0
-  - pip=10.0.1=py36_0
-  - python=3.6.5=hc3d631a_2
-  - python-dateutil=2.7.2=py36_0
-  - pytz=2018.4=py36_0
-  - readline=7.0=ha6073c6_4
-  - setuptools=39.1.0=py36_0
-  - simplejson=3.14.0=py36h14c3975_0
-  - six=1.11.0=py36h372c433_1
-  - sqlite=3.23.1=he433501_0
-  - tk=8.6.7=hc745277_3
-  - werkzeug=0.14.1=py36_0
-  - wheel=0.31.0=py36_0
-  - xz=5.2.3=h5e939de_4
-  - zlib=1.2.11=ha838bed_2
+  - libgcc-ng=8.2.0=hdf63c60_1
+  - libgfortran-ng=7.3.0=hdf63c60_0
+  - libstdcxx-ng=8.2.0=hdf63c60_1
+  - markupsafe=1.1.1=py37h7b6447c_0
+  - mkl=2019.3=199
+  - mkl_fft=1.0.10=py37ha843d7b_0
+  - mkl_random=1.0.2=py37hd81dba3_0
+  - ncurses=6.1=he6710b0_1
+  - numpy=1.16.2=py37h7e9f1db_0
+  - numpy-base=1.16.2=py37hde5b4d6_0
+  - openssl=1.1.1b=h7b6447c_1
+  - pandas=0.24.2=py37he6710b0_0
+  - pip=19.0.3=py37_0
+  - python=3.7.3=h0371630_0
+  - python-dateutil=2.8.0=py37_0
+  - pytz=2018.9=py37_0
+  - readline=7.0=h7b6447c_5
+  - setuptools=40.8.0=py37_0
+  - simplejson=3.16.0=py37h14c3975_0
+  - sqlite=3.27.2=h7b6447c_0
+  - tk=8.6.8=hbc83047_0
+  - werkzeug=0.14.1=py37_0
+  - wheel=0.33.1=py37_0
+  - xz=5.2.4=h14c3975_4
+  - zlib=1.2.11=h7b6447c_3
   - pip:
     - isodate==0.6.0
-    - pyparsing==2.2.0
+    - pyparsing==2.4.0
     - rdflib==4.2.2
-    - sparqlwrapper==1.8.1
+    - six==1.12.0
+    - sparqlwrapper==1.8.2
 prefix: /home/zelgius/anaconda3/envs/flaskdev
 
