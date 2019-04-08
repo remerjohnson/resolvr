@@ -16,17 +16,14 @@ Create the `conda` environment using the environment yml, `flaskdev.yml`:
 ```shell
 $ conda env create -f flaskdev.yml
 ```
-
-### Alternative: using `pip`
-
-Create the `pip` environment using the `requirements.txt` file:
-
+Then as usual, activate the environment:  
 ```shell
-$ pip install -r requirements.txt
+$ conda activate flaskdev
 ```
 
-## How to run
-After setting up the environment, activate it, then `cd` into the `/resolvr/` directory. Export the Flask environment variable: 
+## How to run Resolvr
+
+After setting up the environment and activating it, `cd` into the `/resolvr/` directory. Export the Flask environment variable: 
 ```shell
 $ export FLASK_APP=resolvr.py
 ```
